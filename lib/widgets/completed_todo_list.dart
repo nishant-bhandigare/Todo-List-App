@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_app/widgets/todo_item.dart';
 
-class TodoList extends StatefulWidget {
-  TodoList({Key? key, required this.todoList, required this.removeTodo})
+class CompletedTodoList extends StatefulWidget {
+  CompletedTodoList({Key? key, required this.todoList, required this.reAddTodo})
       : super(key: key);
 
-  void Function(int index) removeTodo;
+  void Function(int index) reAddTodo;
   List<String> todoList;
 
   @override
-  State<TodoList> createState() => _TodoListState();
+  State<CompletedTodoList> createState() => _CompletedTodoListState();
 }
 
-class _TodoListState extends State<TodoList> {
+class _CompletedTodoListState extends State<CompletedTodoList> {
   @override
   Widget build(BuildContext context) {
     List<Widget> todoWidgets = [];
@@ -22,11 +22,11 @@ class _TodoListState extends State<TodoList> {
         Dismissible(
           key: ValueKey(widget.todoList[index]),
           onDismissed: (direction) {
-            widget.removeTodo(index);
+            widget.reAddTodo(index);
           },
           child: TodoItem(
             todo: widget.todoList[index],
-            strikeThrough: false,
+            strikeThrough: true,
           ),
         ),
       );

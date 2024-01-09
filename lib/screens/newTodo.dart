@@ -18,6 +18,7 @@ class NewTodo extends StatelessWidget {
       form.currentState!.save();
       addTodo(enteredTask);
     }
+
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -58,6 +59,5 @@ class NewTodo extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
